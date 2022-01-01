@@ -27,6 +27,6 @@ USER php_crud_app
 WORKDIR /php_crud_app
 
 # installing Composer deps, the vendor folder will only be populated inside the container
-# RUN composer install
+RUN composer install
 
 EXPOSE 9000
