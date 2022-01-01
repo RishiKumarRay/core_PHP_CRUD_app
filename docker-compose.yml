@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+    nginx-server:
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./:/php_crud_app
+
+    php_crud_app:
+        build:
+            context: ./
+            dockerfile: ./php_crud_app.Dockerfile
+        working_dir: /php_crud_app
+        volumes:
+            - ./:/php_crud_app
+            - /php_crud_app/vendor/
+            # error reporting is suitable for DEV here
+            - ./error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
