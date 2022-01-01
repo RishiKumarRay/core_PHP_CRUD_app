@@ -21,6 +21,7 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
   - on Linux
   - on MacOS
 - form builder
+- dynamic favicon
 - CI pipeline that includes tests
 - prod. version of the application stack
 - deploy the application stack as a demo

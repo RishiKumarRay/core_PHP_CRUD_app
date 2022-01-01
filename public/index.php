@@ -9,6 +9,9 @@ $request = $_SERVER['REQUEST_URI'];
 $controller = "App\\Controllers\\";
 
 switch ($request) {
+    case "/contact":
+        $controller .= "ContactForm";
+        break;
     default:
         $controller .= "NotFound";
         break;

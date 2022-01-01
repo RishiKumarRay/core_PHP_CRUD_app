@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Env {
+final class Env {
 
     public static function isRunningInDocker(): bool {
         $processStack = explode(PHP_EOL, shell_exec('cat /proc/self/cgroup | grep docker'));

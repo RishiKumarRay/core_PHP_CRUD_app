@@ -4,14 +4,28 @@ namespace App\Controllers;
 
 abstract class Controller {
 
-    public int $statusCode;
+    protected string $_layoutPath = "layout.php";
+    protected string $_pageTitle;
+    protected int $_statusCode;
+    protected string $_viewPath;
     protected string $_viewsDirPath;
 
-    public function __construct(string $viewsDirPath)
+    protected function __construct(string $viewsDirPath)
     {
         $this->_viewsDirPath = $viewsDirPath;
     }
 
-    public abstract function echoHTML() : void;
+    protected function _setLayoutPath(string $layoutPath) : void {
+        $this->_layoutPath = $layoutPath;
+    }
+
+    public function echoHTML(): void
+    {
+        $pageTitle = $this->_pageTitle;
+        $pageContent = file_get_contents($this->_viewsDirPath.DIRECTORY_SEPARATOR.$this->_viewPath);
+        http_response_code($this->statusCode);
+        include($this->_viewsDirPath.DIRECTORY_SEPARATOR.$this->_layoutPath);
+    }
+
 
 }

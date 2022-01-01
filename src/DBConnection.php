@@ -5,7 +5,7 @@ namespace App;
 use PDO;
 use PDOException;
 
-class DBConnection {
+final class DBConnection {
 
     private ?PDO $_connection = null;
     private static $_instance = null;
