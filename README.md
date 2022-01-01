@@ -15,10 +15,12 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
 
 - TODO's
 - license the app'
+- should be a template repo
 - automate adding dev app' url to hosts file
   - on Windows
   - on Linux
   - on MacOS
 - form builder
+- CI pipeline that includes tests
 - prod. version of the application stack
 - deploy the application stack as a demo
