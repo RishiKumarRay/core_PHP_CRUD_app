@@ -1,5 +1,8 @@
 version: '3.9'
 
+volumes:
+    php_crud_app-db-vol:
+
 services:
 
     nginx-server:
@@ -9,6 +12,26 @@ services:
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
             - ./:/php_crud_app
+
+    php_crud_app-db:
+        image: 'mariadb:latest'
+        volumes:
+            - php_crud_app-db-vol:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: php_crud_app
+            MYSQL_DATABASE:  php_crud_app
+
+    phpmyadmin:
+        image: phpmyadmin:latest
+        restart: unless-stopped
+        ports:
+            - 8080:80
+        environment:
+            # we specify that we connect to an arbitrary server with the flag below
+            # "arbitrary" means you're able to specify which database server to use on login page of phpmyadmin      
+            - PMA_ARBITRARY=1
+        depends_on:
+          - php_crud_app-db
 
     php_crud_app:
         build:
@@ -20,3 +43,10 @@ services:
             - /php_crud_app/vendor/
             # error reporting is suitable for DEV here
             - ./error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+        environment:
+            MYSQL_HOST: php_crud_app-db
+            MYSQL_USER: root
+            MYSQL_PASSWORD: php_crud_app
+            MYSQL_DB: php_crud_app
+        depends_on:
+          - php_crud_app-db
