@@ -13,6 +13,7 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
 
 ## TODOS
 
+- TODO's
 - license the app'
 - automate adding dev app' url to hosts file
   - on Windows

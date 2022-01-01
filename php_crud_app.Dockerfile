@@ -8,6 +8,10 @@ RUN apt-get update \
     && apt-get install -y zip \
     && apt-get install -y unzip
 
+# to get the list of existing extensions in this image => docker run -it --rm php:8.1.1-fpm php -m
+# installing additional PHP extensions using 'docker-php-ext-install' followed by the name of the extension
+RUN docker-php-ext-install pdo_mysql
+
 # get latest Composer and making it available in the path
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
