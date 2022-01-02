@@ -3,6 +3,7 @@
 require dirname(__DIR__).'/vendor/autoload.php';
 
 use App\Controllers\NotFoundController;
+use App\Mailer;
 
 $request = $_SERVER['REQUEST_URI'];
 
@@ -22,4 +23,3 @@ $controller .= "Controller";
 $controllerInstance = new $controller(dirname(__DIR__).DIRECTORY_SEPARATOR."views");
 
 $controllerInstance->echoHTML();
-

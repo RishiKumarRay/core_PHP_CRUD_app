@@ -20,6 +20,7 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
   - on Windows
   - on Linux
   - on MacOS
+- automate generation of msmtprc file
 - form builder
 - dynamic favicon
 - CI pipeline that includes tests

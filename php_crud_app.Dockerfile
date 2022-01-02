@@ -6,7 +6,8 @@ RUN apt-get update \
     && apt-get install -y sudo \
     && apt-get install -y git \
     && apt-get install -y zip \
-    && apt-get install -y unzip
+    && apt-get install -y unzip \
+    && apt-get install -y msmtp msmtp-mta
 
 # to get the list of existing extensions in this image => docker run -it --rm php:8.1.1-fpm php -m
 # installing additional PHP extensions using 'docker-php-ext-install' followed by the name of the extension
@@ -24,6 +25,9 @@ RUN mkdir -p /home/php_crud_app/.composer && \
 COPY . /php_crud_app
 # copy existing application directory permissions
 COPY --chown=php_crud_app:php_crud_app . /php_crud_app
+
+# copy email settings
+COPY ./msmtprc /etc/msmtprc
 
 # changing user (because cannot run Composer as root)
 USER php_crud_app
