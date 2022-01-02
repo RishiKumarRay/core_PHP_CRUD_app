@@ -3,7 +3,6 @@
 require dirname(__DIR__).'/vendor/autoload.php';
 
 use App\Controllers\NotFoundController;
-use App\Mailer;
 
 $request = $_SERVER['REQUEST_URI'];
 
