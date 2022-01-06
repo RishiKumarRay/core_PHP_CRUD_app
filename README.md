@@ -14,6 +14,7 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
 ## TODOS
 
 - TODO's
+- home link in jumbotron
 - license the app'
 - should be a template repo
 - automate adding dev app' url to hosts file
@@ -23,6 +24,7 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
 - automate generation of msmtprc file
 - form builder
 - dynamic favicon
+- shadow under jumbotron
 - CI pipeline that includes tests
 - prod. version of the application stack
 - CSRF protection in forms
