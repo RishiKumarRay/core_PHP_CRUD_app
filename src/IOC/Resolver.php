@@ -8,10 +8,7 @@ use ReflectionException;
 final class Resolver
 {
 
-    /**
-     * @throws ReflectionException
-     */
-    public function resolveClass(string $className, array $args) {
+    public function resolveClass(string $className, array $args = []) {
         try {
             $reflected = new ReflectionClass($className);
         } catch (ReflectionException $re) {
