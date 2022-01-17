@@ -1,10 +1,9 @@
 <?php
 
-namespace Tests\Integration;
+namespace Tests\Integration\Databases;
 
-use App\DBConnection;
+use App\Databases\MariaDBConnection;
 use App\Env;
-use PDO;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -23,8 +22,8 @@ class DBConnectionIntegrationTest extends TestCase {
     }
 
     public function test_DBConnection_setsConnection() {
-        $expected = PDO::class;
-        $actual = get_class(DBConnection::getInstance()->getConnection());
+        $expected = MariaDBConnection::class;
+        $actual = get_class(MariaDBConnection::getSingletonInstance());
         $this->assertNotNull($actual);
         $this->assertEquals($expected, $actual);
     }

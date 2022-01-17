@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Databases;
 
 use PDO;
 use PDOException;
 
-final class DBConnection {
+final class MariaDBConnection implements DBConnection {
 
     private ?PDO $_connection = null;
     private static $_instance = null;
@@ -23,16 +23,12 @@ final class DBConnection {
         }
     }
 
-    public static function getInstance(): DBConnection 
+    public static function getSingletonInstance(): MariaDBConnection
     {
         if (is_null(self::$_instance)) {
-            self::$_instance = new DBConnection();  
+            self::$_instance = new MariaDBConnection();
         }
         return self::$_instance;
-    }
-
-    public function getConnection() {
-        return $this->_connection;
     }
 
 }

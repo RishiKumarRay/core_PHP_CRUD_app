@@ -20,7 +20,7 @@ abstract class Controller {
         $this->_layoutPath = $layoutPath;
     }
 
-    public function echoHTML(): void
+    public function outputView(): void
     {
         $pageH1 = $this->_pageH1;
         $pageTitle = $this->_pageTitle;

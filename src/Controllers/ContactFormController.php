@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class ContactFormController extends Controller {
+final class ContactFormController extends Controller {
 
     public function __construct(string $viewsDirPath)
     {

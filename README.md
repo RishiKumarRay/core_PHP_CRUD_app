@@ -9,7 +9,7 @@ a ready-to-use PHP CRUD app' built without a framework that contains various ser
 
 ## test the app'
 
-- `docker exec -it core_php_crud_app-php_crud_app-1 bash -c "/php_crud_app/vendor/bin/phpunit"`
+- `docker exec -it {containerId} bash -c "/php_crud_app/vendor/bin/phpunit"`
 
 ## roadmap
 
