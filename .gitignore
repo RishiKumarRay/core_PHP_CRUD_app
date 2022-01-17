@@ -2,3 +2,4 @@ TO_TIDY
 .phpunit.cache
 msmtprc
 .idea
+/data/

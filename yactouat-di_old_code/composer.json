@@ -1,0 +1,28 @@
+{
+    "name": "yactouat/di",
+    "description": "my implementation of the psr/container interface",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yactouat\\DI\\": "src/",
+            "Yactouat\\DI\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yacine Touati",
+            "email": "yacine.touati.pro@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "require": {
+        "php": "^8.0",
+        "yactouat/arrays": "^1.0",
+        "psr/container": "^2.0",
+        "yactouat/exceptions": "^3.0",
+        "yactouat/interfaces": "^9.0"
+    }
+}

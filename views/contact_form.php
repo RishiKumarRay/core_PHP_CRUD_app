@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-6 mt-5 mx-auto">
-        <!-- TODO handle POST route to contact-forms -->
         <form method="post" action="/contact-forms" class="border p-3">
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="sender" placeholder="you@domain.com">

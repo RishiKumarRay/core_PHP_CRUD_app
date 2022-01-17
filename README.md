@@ -1,6 +1,6 @@
 # core PHP CRUD app'
 
-a PHP CRUD app' built without a framework, who knows ? maybe it'll become a framework itself one day...
+a ready-to-use PHP CRUD app' built without a framework that contains various services, who knows ? maybe it'll become a framework itself one day...
 
 ## run the app'
 
@@ -11,22 +11,11 @@ a PHP CRUD app' built without a framework, who knows ? maybe it'll become a fram
 
 - `docker exec -it core_php_crud_app-php_crud_app-1 bash -c "/php_crud_app/vendor/bin/phpunit"`
 
-## TODOS
+## roadmap
 
-- TODO's
-- home link in jumbotron
-- license the app'
-- should be a template repo
-- automate adding dev app' url to hosts file
-  - on Windows
-  - on Linux
-  - on MacOS
-- automate generation of msmtprc file
-- form builder
-- dynamic favicon
-- shadow under jumbotron
-- CI pipeline that includes tests
-- prod. version of the application stack
-- CSRF protection in forms
-- deploy the application stack as a demo
-- voice command
+- v1 milestone
+- modern logging and fullstack observability milestone
+- MongoDB adapter + ORM milestone
+- CLI milestone
+- voice command features milestone
+- backlog
