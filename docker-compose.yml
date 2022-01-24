@@ -10,6 +10,7 @@ services:
         image: phpstorm/php-71-apache-xdebug
         ports:
             - "8081:80"
+        # TODO fix below
         volumes:
             - ./workshop/07_Debugging:/var/www/html
         environment:
@@ -28,6 +29,7 @@ services:
         #   Uncomment for macOS/Linux
         # - /tmp:/home/jetbrains/upload
         command: jetbrains:jetbrains:1001
+    
     mysql:
         image: phpstorm/mysql
         ports:

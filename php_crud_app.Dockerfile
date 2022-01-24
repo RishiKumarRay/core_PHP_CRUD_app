@@ -18,23 +18,33 @@ RUN apt-get update \
     && apt-get install -y unzip
 # get latest Composer and making it available in the path
 COPY --from=composer:2.2.4 /usr/bin/composer /usr/bin/composer
-
-# stage: app specific
-FROM system_composer
 # create system user ("php_crud_app" with uid 1000) to run Composer commands
 RUN useradd -G www-data,root -u 1000 -d /home/php_crud_app php_crud_app
 RUN mkdir -p /home/php_crud_app/.composer && \
     chown -R php_crud_app:php_crud_app /home/php_crud_app
 # copy existing application directory contents
-COPY . /php_crud_app
-# copy existing application directory permissions
-COPY --chown=php_crud_app:php_crud_app . /php_crud_app
-# copy email settings
-COPY --from=msmtp /etc/msmtprc /etc/msmtprc
+COPY ./composer.json /php_crud_app/composer.json
+COPY ./composer.lock /php_crud_app/composer.lock
 # changing user (because cannot run Composer as root)
 USER php_crud_app
 WORKDIR /php_crud_app
 # installing Composer deps, the vendor folder will only be populated inside the container
 RUN composer install
+
+# stage: app specific
+FROM system_composer
+# copy email settings
+COPY --from=msmtp /etc/msmtprc /etc/msmtprc
+# create system user ("php_crud_app" with uid 1000)
+RUN useradd -G www-data,root -u 1000 -d /home/php_crud_app php_crud_app
+RUN chown -R php_crud_app:php_crud_app /home/php_crud_app
+# copy existing application directory contents
+COPY . /php_crud_app
+# copy existing application directory permissions
+COPY --chown=php_crud_app:php_crud_app . /php_crud_app
+COPY --from=system_composer /php_crud_app/vendor /php_crud_app/vendor
+# changing user (because cannot run Composer as root)
+USER php_crud_app
+WORKDIR /php_crud_app
 
 EXPOSE 9000
