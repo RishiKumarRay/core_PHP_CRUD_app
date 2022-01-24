@@ -29,5 +29,7 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Run test suite
-      run: composer run-script test
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v3
+      with:
+        configuration: ./phpunit.xml
