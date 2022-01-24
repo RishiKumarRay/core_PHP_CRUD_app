@@ -1,35 +1,20 @@
-name: PHP Composer
+name: CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
-  build:
-
+  tests:
+    name: Automated tests
     runs-on: ubuntu-latest
-
+    env:
+      DB_DATABASE: github_actions_testing_test
+      DB_USERNAME: root
+      DB_PASSWORD: root
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Validate composer.json and composer.lock
-      run: composer update
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    - name: PHPUnit tests
-      uses: php-actions/phpunit@v3
-      with:
-        configuration: ./phpunit.xml
+    - uses: actions/checkout@v1
+    - name: Build application
+      run: make github
+    - name: Lint with PHP CS Fixer
+      run: make lint
+    - name: Test with PHPUnit
+      run: make test
