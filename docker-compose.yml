@@ -12,7 +12,7 @@ services:
             - "8081:80"
         # TODO fix below
         volumes:
-            - ./workshop/07_Debugging:/var/www/html
+            - ./debugging:/var/www/html
         environment:
             #For Windows and macOS, replace the line below with `host.docker.internal`, which will automatically resolve to the internal address of the host Docker is running on.
             #For Linux, replace the line below with your hostname, which you can obtain by executing `hostname` in Terminal.
@@ -71,8 +71,8 @@ services:
 
     php_crud_app:
         build:
-            context: ./
-            dockerfile: ./php_crud_app.Dockerfile
+            context: .
+            dockerfile: ./docker/php_crud_app.Dockerfile
         working_dir: /php_crud_app
         volumes:
             - ./:/php_crud_app
